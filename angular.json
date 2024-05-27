@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "delivery-tracking": {
+    "warehouse-master": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/delivery-tracking",
+            "outputPath": "dist/warehouse-master",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -25,6 +25,7 @@
               "src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -54,13 +55,18 @@
           "defaultConfiguration": "production"
         },
         "serve": {
+          "options": {
+            "headers": {
+              "Content-Security-Policy": "frame-ancestors 'self' https://oauth.telegram.org"
+            }
+          },
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "delivery-tracking:build:production"
+              "buildTarget": "warehouse-master:build:production"
             },
             "development": {
-              "buildTarget": "delivery-tracking:build:development"
+              "buildTarget": "warehouse-master:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -68,7 +74,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "delivery-tracking:build"
+            "buildTarget": "warehouse-master:build"
           }
         },
         "test": {
@@ -84,6 +90,7 @@
               "src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -91,5 +98,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

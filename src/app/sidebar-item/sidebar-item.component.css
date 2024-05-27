@@ -1,0 +1,11 @@
+mat-list-item {
+    cursor: pointer;
+  }
+  
+  .container {
+    display: flex;
+    align-items: center;
+  }
+  .container span {
+    margin-left: 5%;
+  }

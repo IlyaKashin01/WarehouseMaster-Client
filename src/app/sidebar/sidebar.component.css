@@ -1,0 +1,41 @@
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+  
+    img {
+      height: 40px;
+    }
+  
+    span {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  }
+  
+  .profile {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    margin-top: auto;
+  
+    img {
+      border-radius: 50%;
+      height: 40px;
+      margin-right: 8px;
+    }
+  
+    span {
+      font-size: 1rem;
+    }
+  }
+  .sidebar-item {
+    display: flex;
+    align-items: center;
+  }
+  
+  .icon-folder {
+    /* Стили для иконки */
+    margin-right: 5px; /* Дополнительный отступ между иконкой и меткой */
+  }
