@@ -1,80 +1,82 @@
-<div class="dashboard">
-    <div class="card">
-      <p-card header="Total Shipment">
-        <h1>{{ totalShipment }}</h1>
-        <p>{{ totalShipmentChange }}</p>
+<table class="dashboard">
+  <td class="card-info">
+    <div>
+      <div class="card">
+        <p-card header="Total Shipment">
+          <h1>{{ totalShipment }}</h1>
+          <p>{{ totalShipmentChange }}</p>
+        </p-card>
+      </div>
+
+      <div class="card">
+        <p-card header="Complete">
+          <h1>{{ complete }}</h1>
+          <p>{{ completeChange }}</p>
+        </p-card>
+      </div>
+    </div>
+
+    <div>
+      <div class="card">
+        <p-card header="Pending">
+          <h1>{{ pending }}</h1>
+          <p>{{ pendingChange }}</p>
+        </p-card>
+      </div>
+
+      <div class="card">
+        <p-card header="Refund">
+          <h1>{{ refund }}</h1>
+          <p>{{ refundChange }}</p>
+        </p-card>
+      </div>
+
+    </div>
+    <div class="chart-bar">
+        <p-card header="Загрузка складов">
+          <p-chart type="bar" [data]="popularCityData" [options]="popularCityData.options" ></p-chart>
+        </p-card>
+    </div>
+  </td>
+
+  <td class="right-elements">
+    <div class="chart-line">
+      <p-card header="Прибыль">
+        <p-chart type="line" [data]="shipmentAnalyticsData" [options]="shipmentAnalyticsData.options"></p-chart>
       </p-card>
     </div>
-  
-    <div class="card">
-      <p-card header="Complete">
-        <h1>{{ complete }}</h1>
-        <p>{{ completeChange }}</p>
-      </p-card>
-    </div>
-  
-    <div class="card">
-      <p-card header="Pending">
-        <h1>{{ pending }}</h1>
-        <p>{{ pendingChange }}</p>
-      </p-card>
-    </div>
-  
-    <div class="card">
-      <p-card header="Refund">
-        <h1>{{ refund }}</h1>
-        <p>{{ refundChange }}</p>
-      </p-card>
-    </div>
-  
-    <div class="card">
-      <p-card header="Shipment Analytics">
-        <p-chart type="scatter" [data]="shipmentAnalyticsData"></p-chart>
-      </p-card>
-    </div>
-  
-    <div class="card">
-      <p-card header="Popular City">
-        <p-chart type="bar" [data]="popularCityData"></p-chart>
-      </p-card>
-    </div>
-  
-    <div class="card">
-      <p-card header="Tracking Location">
-        <!-- Embed a Google Map here -->
-      </p-card>
-    </div>
-  
-    <div class="card">
-      <p-card header="Delivery Vehicles">
-        <h1>{{ deliveryVehicles }}</h1>
-        <p>{{ deliveryVehiclesChange }}</p>
-      </p-card>
-    </div>
-  
-    <div class="card">
-      <p-card header="Payment History">
-        <p-table [value]="paymentHistory">
-          <ng-template pTemplate="header">
-            <tr>
-              <th>Vehicle Number</th>
-              <th>Vehicle Type</th>
-              <th>Driver's Name</th>
-              <th>Vehicle Status</th>
-              <th>Last Location</th>
-            </tr>
-          </ng-template>
-          <ng-template pTemplate="body" let-history>
-            <tr>
-              <td>{{ history.vehicleNumber }}</td>
-              <td>{{ history.vehicleType }}</td>
-              <td>{{ history.driverName }}</td>
-              <td>{{ history.vehicleStatus }}</td>
-              <td>{{ history.lastLocation }}</td>
-            </tr>
-          </ng-template>
-        </p-table>
-      </p-card>
-    </div>
+  <div class="card">
+    <p-table [value]="products" [tableStyle]="{'min-width': '50rem'}">
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th>Name </th>
+          <th>Price</th>
+          <th>Category</th>
+          <th>Quantity</th>
+          <th>Status</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-product let-columns="columns">
+        <tr>
+          <td>
+            {{product.name}}
+          </td>
+          <td>
+            {{product.price }}
+          </td>
+          <td>
+            {{product.category}}
+          </td>
+          <td>
+            {{product.quantity}}
+          </td>
+          <td>
+            <p-tag [value]="product.inventoryStatus" [severity]="getSeverity(product.inventoryStatus)" />
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
   </div>
-  
+  </td>
+
+</table>
