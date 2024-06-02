@@ -1,0 +1,112 @@
+<div class="settings-container">
+    <div class="settings-item-container">
+        <div>
+            <h3>Изменить профиль</h3>
+        </div>
+        <div>
+            <p-dialog header="Header" [(visible)]="visible" [modal]="true" [style]="{ width: '25rem' }">
+                <ng-template pTemplate="header">
+                    <div class="edit-profile-avatar">
+                        <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" shape="circle" />
+                        <span class="edit-profile-avatar-text">
+                            Amy Elsner
+                        </span>
+                    </div>
+                </ng-template>
+                <span class="edit-profile-header p-text-secondary">Изменение профиля.</span>
+                <div class="edit-profile-input-container">
+                    <label for="username" class="edit-profile-input-label">
+                        Имя
+                    </label>
+                    <input pInputText id="username" class="edit-profile-input" autocomplete="off" />
+                </div>
+                <div class="edit-profile-input-container">
+                    <label for="username" class="edit-profile-input-label">
+                        Фамилия
+                    </label>
+                    <input pInputText id="username" class="edit-profile-input" autocomplete="off" />
+                </div>
+                <div class="edit-profile-input-container">
+                    <label for="username" class="edit-profile-input-label">
+                        Отчество
+                    </label>
+                    <input pInputText id="username" class="edit-profile-input" autocomplete="off" />
+                </div>
+                <div class="edit-profile-input-container">
+                    <label for="username" class="edit-profile-input-label">
+                        Логин
+                    </label>
+                    <input pInputText id="username" class="edit-profile-input" autocomplete="off" />
+                </div>
+                <div class="edit-profile-input-container">
+                    <label for="email" class="edit-profile-input-label">Email</label>
+                    <input pInputText id="email" class="edit-profile-input" autocomplete="off" />
+                </div>
+                <ng-template pTemplate="footer">
+                    <p-button label="Cancel" [text]="true" severity="secondary" (click)="visible = false" />
+                    <p-button label="Save" [outlined]="true" severity="secondary" (click)="visible = false" />
+                </ng-template>
+            </p-dialog>
+
+            <p-button (click)="showDialog()" icon="pi pi-pencil" label="Изменить" />
+        </div>
+    </div>
+    <div class="settings-item-container">
+        <div>
+            <h3>Изменить пароль</h3>
+        </div>
+        <div>
+            <p-dialog header="Header" [(visible)]="visiblePass" [modal]="true" [style]="{ width: '25rem' }">
+                <ng-template pTemplate="header">
+                    <div class="edit-profile-avatar">
+                        <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" shape="circle" />
+                        <span class="edit-profile-avatar-text">
+                            Amy Elsner
+                        </span>
+                    </div>
+                </ng-template>
+                <span class="edit-profile-header p-text-secondary">Изменение пароля.</span>
+                <div class="edit-profile-input-container">
+                    <label for="username" class="edit-profile-input-label">
+                        Старый пароль
+                    </label>
+                    <input pInputText id="username" class="edit-profile-input" autocomplete="off" />
+                </div>
+                <div class="edit-profile-input-container">
+                    <label for="username" class="edit-profile-input-label">
+                        Новый пароль
+                    </label>
+                    <input pInputText id="username" class="edit-profile-input" autocomplete="off" />
+                </div>
+                <ng-template pTemplate="footer">
+                    <p-button label="Cancel" [text]="true" severity="secondary" (click)="visiblePass = false" />
+                    <p-button label="Save" [outlined]="true" severity="secondary" (click)="visiblePass = false" />
+                </ng-template>
+            </p-dialog>
+            <p-button (click)="showDialogPass()" icon="pi pi-pencil" label="Изменить" />
+        </div>
+    </div>
+    <div class="settings-item-container">
+        <div>
+            <h3>Уведомления по email</h3>
+        </div>
+        <div>
+            <form [formGroup]="settingsForm" (ngSubmit)="saveSettings()">
+              <div class="p-fluid">
+                <div class="p-field-checkbox">
+                  <p-toggleButton onLabel="On" offLabel="Off" formControlName="notifications"></p-toggleButton>
+                </div>
+              </div>
+            </form>
+        </div>
+    </div>
+    <div class="settings-item-container">
+        <div>
+            <h3>Выход из приложения</h3>
+        </div>
+        <div>
+            <p-button (click)="true" icon="pi pi-sign-out" label="Выйти" />
+        </div>
+    </div>
+  </div>
+  

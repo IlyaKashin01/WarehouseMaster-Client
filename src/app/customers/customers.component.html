@@ -1,0 +1,36 @@
+<table>
+    <tr class="form-container">
+        <div class="card flex justify-content-center add-customer-button">
+            <app-add-customer-form [visible]="visible" (closeForm)="close()"/>
+            <p-button (click)="visible = true" icon="pi pi-plus" label="Добавить" />
+        </div>
+    </tr>
+    <tr class="table-container">
+        <div class="card">
+            <p-table
+                [value]="customers"
+                [paginator]="true"
+                [rows]="10"
+                [tableStyle]="{ 'min-width': '90rem'}"
+                [rowsPerPageOptions]="[10, 15, 50]" [style]="{'margin' : '2%', 'border' : '1px solid #e2e8f0', 'padding' : '1%', 'border-radius' : '15px'}"
+            >
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width:20%">ФИО</th>
+                        <th style="width:20%">Склад</th>
+                        <th style="width:20%">Должность</th>
+                        <th style="width:20%">Дата рождения</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-customer>
+                    <tr>
+                        <td>{{ customer.firstName }} {{ customer.middleName }} {{ customer.lastName }}</td>
+                        <td>{{ customer.warehouse }}</td>
+                        <td>{{ customer.post }}</td>
+                        <td>{{ customer.birthday }}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </tr>
+</table>

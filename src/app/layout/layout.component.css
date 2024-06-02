@@ -1,3 +1,33 @@
-.example-container {
-    height: 100%;
+  .layout-container {
+    display: flex;
+    height: 100vh;
+    /* height: auto; */
   }
+
+  .sidebar-container {
+    width: 15vw;
+    border-right: 1px solid #e2e8f0;
+    flex: 0 0 auto;
+  }
+
+  .avatar-container {
+    display: flex;
+    align-items: center;
+    gap: 3%;
+    margin: 5%;
+  }
+
+  .children-container {
+    width: 100%;
+    box-sizing: border-box;
+    overflow-y: auto;
+  }
+  .dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: #4caf50;
+    border-radius: 50%;
+    margin: 0 0 2% 2%;
+    position: absolute;
+}

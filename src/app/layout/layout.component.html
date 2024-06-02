@@ -1,8 +1,22 @@
-<mat-sidenav-container class="example-container">
+<!-- <mat-sidenav-container class="example-container">
     <mat-sidenav mode="side" opened>
         <app-sidebar></app-sidebar>
     </mat-sidenav>
     <mat-sidenav-content>
         <router-outlet></router-outlet>
     </mat-sidenav-content>
-</mat-sidenav-container>
+</mat-sidenav-container> -->
+<table class="layout-container">
+    <tr class="sidebar-container">
+        <div class="avatar-container">
+            <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" 
+            styleClass="mr-2" 
+            size="large" (click)="true"><span class="dot"></span></p-avatar> 
+                <span> User User</span>
+        </div>
+        <app-sidebar/>
+    </tr>
+    <tr class="children-container">
+        <router-outlet></router-outlet>
+    </tr>
+</table>

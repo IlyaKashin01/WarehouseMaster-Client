@@ -1,0 +1,27 @@
+.input-container {
+    display: flex;
+    align-items: center;
+    gap: 2%;
+    margin-bottom: 2%;
+}
+
+.input-container label {
+    width: 5rem;
+    font-weight: 600;
+}
+
+.input-container input {
+    /* flex: auto; */
+    width: 15rem;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: end;
+    gap: 3%;
+}
+
+.form-description {
+    display: block;
+    margin-bottom: 5%;
+}

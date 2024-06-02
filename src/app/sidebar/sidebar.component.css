@@ -40,3 +40,17 @@
     /* Стили для иконки */
     margin-right: 5px; /* Дополнительный отступ между иконкой и меткой */
   }
+
+.sidebar-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-item {
+  margin: 3%;
+}
+
+.p-element {
+  display: flex;
+  width: 100%;
+}

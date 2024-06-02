@@ -1,0 +1,48 @@
+<p-sidebar [(visible)]="visible" [style]="{ width: '45rem' }" [closeOnEscape]="true" showCloseIcon="false" >
+    <span class="form-description">Добавление соторудника.</span>
+    <div class="input-container">
+        <label for="email">Склад</label>
+        <p-treeSelect 
+        class="md:w-30rem w-full" 
+        containerStyleClass="w-full" 
+        
+        [options]="nodes" 
+        placeholder="Выберете склад" 
+        />
+    </div>
+    <div class="input-container">
+        <label for="firstName" >Имя</label>
+        <input pInputText id="firstName" [(ngModel)]="firstName" autocomplete="off" />
+        <label for="lastName" >Фамилия</label>
+        <input pInputText id="lastName" [(ngModel)]="lastName" autocomplete="off" />
+    </div>
+    <div class="input-container">
+        <label for="middleName">Отчество</label>
+        <input pInputText id="middleName" [(ngModel)]="middleName"  autocomplete="off" />
+        <label for="email">Email</label>
+        <input pInputText id="email" [(ngModel)]="email"  autocomplete="off" />
+    </div>
+    <div class="input-container">
+        <label for="birthday">Дата рождения</label>
+        <p-calendar [(ngModel)]="birthday" autocomplete="off"/>
+        <label for="role">Роль</label>
+        <input pInputText id="roleItem" [(ngModel)]="role"  autocomplete="off" />
+        <!-- <p-treeSelect 
+        class="md:w-30rem w-full" 
+        containerStyleClass="w-full" 
+        formControlName="roleItem" 
+        [options]="roles" 
+        placeholder="Выберете роль" 
+        /> -->
+    </div>
+    <div class="input-container">
+        <label for="post">Должность</label>
+        <input pInputText id="post" [(ngModel)]="post"  autocomplete="off" />
+        <label for="salary">Заработная плата</label>
+        <input pInputText id="salary" [(ngModel)]="salary"  autocomplete="off" />
+    </div>
+    <div class="buttons-container">
+        <p-button label="Cancel" severity="secondary" class="p-element" (click)="close()" />
+        <p-button label="Save" class="p-element"  (click)="save()" />
+    </div>
+</p-sidebar>

@@ -1,0 +1,7 @@
+.w-container {
+    display: flex;
+}
+.warehouse-container {
+    margin: 5% 0 0 5%;
+    border: 1px solid #e2e8f0;
+}

@@ -40,13 +40,13 @@
   </td>
 
   <td class="right-elements">
-    <div class="chart-line">
+    <div class="chart-line" [style]="{'width' : '50rem'}">
       <p-card header="Прибыль">
         <p-chart type="line" [data]="shipmentAnalyticsData" [options]="shipmentAnalyticsData.options"></p-chart>
       </p-card>
     </div>
-  <div class="card">
-    <p-table [value]="products" [tableStyle]="{'min-width': '50rem'}">
+  <div class="card" [style]="{'width' : '55rem'}">
+    <p-table [value]="products" [tableStyle]="{'width': '55rem'}">
       <ng-template pTemplate="header" let-columns>
         <tr>
           <th>Name </th>

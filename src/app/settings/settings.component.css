@@ -1,0 +1,44 @@
+.settings-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3%;
+    justify-content: center;
+    max-width: 600px;
+    margin: 5% auto;
+  }
+  
+  .settings-item-container{
+    display: flex;
+    gap: 3%;
+    margin: 2% 0;
+  }
+  .settings-item-container div h3 {
+    width: 8rem;
+  }
+  .edit-profile-avatar{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2%;
+  }
+  .edit-profile-avatar-text {
+    font-weight: bold;
+    white-space: nowrap;
+  }
+  .edit-profile-input-container{
+    display: flex;
+    align-items: center;
+    gap: 3%;
+    margin-bottom: 2%;
+  }
+  .edit-profile-input-label{
+    font-weight: 600;
+    width: 6rem;
+  }
+  .edit-profile-input{
+    flex: auto;
+  }
+  .edit-profile-header {
+    display: block;
+    margin-bottom: 5%;
+  }

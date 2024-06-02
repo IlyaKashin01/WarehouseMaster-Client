@@ -1,11 +1,5 @@
-<div class="logo">
-  <img
-    src="https://www.primefaces.org/wp-content/uploads/2018/05/primeng-logo.png"
-    alt="Your Logo"
-  />
-  <span>Amy Elsner</span>
-</div>
-<mat-nav-list>
+
+<!-- <mat-nav-list>
   <mat-expansion-panel >
     <mat-expansion-panel-header>
       <mat-panel-title> FAVORITES </mat-panel-title>
@@ -36,5 +30,24 @@
     <app-sidebar-item icon="assessment" label="Performance"></app-sidebar-item>
     <app-sidebar-item icon="settings" label="Settings"></app-sidebar-item>
   </mat-expansion-panel>
-</mat-nav-list>
-
+</mat-nav-list> -->
+<table class="sidebar-container">
+  <td class="sidebar-item">
+    <p-button label="Главная" [text]="true" [raised]="true" [style]="{'width' : '100%'}" (onClick)="redirectToDashboard()"/>
+  </td>
+  <td class="sidebar-item">
+    <p-button label="Склады" [text]="true" [raised]="true" [style]="{'width' : '100%'}" (onClick)="redirectToWarehouses()"/>
+  </td>
+  <td class="sidebar-item">
+    <p-button label="Сотрудники" [text]="true" [raised]="true" [style]="{'width' : '100%'}" (onClick)="redirectToCustomers()"/>
+  </td>
+  <td class="sidebar-item">
+    <p-button label="Поставщики" [text]="true" [raised]="true" [style]="{'width' : '100%'}" (onClick)="redirectToSupplers()"/>
+  </td>
+  <td class="sidebar-item">
+    <p-button label="Сообщения" [text]="true" [raised]="true" [style]="{'width' : '100%'}" (onClick)="redirectToCustomers()"/>
+  </td>
+  <td class="sidebar-item">
+    <p-button label="Настройки" [text]="true" [raised]="true" [style]="{'width' : '100%'}" (onClick)="redirectToSettings  ()" />
+  </td>
+</table>

@@ -8,6 +8,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatBadgeModule } from '@angular/material/badge';
 import { HttpClientModule} from "@angular/common/http";
+import { CommonModule } from '@angular/common';
 @Component({
     selector: 'app-root',
     standalone: true,
@@ -22,6 +23,7 @@ import { HttpClientModule} from "@angular/common/http";
         MatExpansionModule,
         MatBadgeModule,
         SidebarComponent,
+        CommonModule,
       HttpClientModule
     ]
 })

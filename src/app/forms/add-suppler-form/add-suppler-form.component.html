@@ -1,0 +1,26 @@
+<p-sidebar [(visible)]="visible" [style]="{ width: '45rem' }" [closeOnEscape]="true" showCloseIcon="false">
+    <span class="form-description">Добавление поставщика.</span>
+
+    <div class="input-container">
+        <label for="username" >Имя</label>
+        <input pInputText id="username" autocomplete="off" />
+        <label for="username" >Фамилия</label>
+        <input pInputText id="username" autocomplete="off" />
+    </div>
+    <div class="input-container">
+        <label for="email">Отчество</label>
+        <input pInputText id="email"  autocomplete="off" />
+        <label for="email">Email</label>
+        <input pInputText id="email"  autocomplete="off" />
+    </div>
+    <div class="input-container">
+        <label for="email">Телефон</label>
+        <input pInputText id="email"  autocomplete="off" />
+        <label for="email">Email</label>
+        <input pInputText id="email"  autocomplete="off" />
+    </div>
+    <div class="buttons-container">
+        <p-button label="Cancel" severity="secondary" class="p-element" (click)="close()" />
+        <p-button label="Save" class="p-element"  (click)="visible = false" />
+    </div>
+</p-sidebar>
