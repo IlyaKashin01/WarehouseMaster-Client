@@ -1,1 +1,45 @@
-<p>chat works!</p>
+<div class="chat-panel" >
+    <div class="chat-header">
+        <div>
+            <img src="data:image/jpeg;base64,{{dialog.avatar}}" 
+                class="person-avatar"  
+                size="large" (click)="true"/>
+                <span *ngIf="onlineMarkers.includes(dialog.id)" class="dot"></span>
+        </div>
+        <p>{{dialog.name}}</p>
+    </div>
+    <div class="history" #historyContainer>
+        <div *ngFor="let group of personalMessages">
+            <p class="date-message">{{group.sentAt | date:'dd|MM|yyyy '}}</p>
+            <div *ngFor="let message of group.messages">
+                <div *ngIf="message.senderId !== personId" class="incoming-message-container">
+                    <div class="incoming-item">
+                        <p class="incoming-sender">{{ message.senderLogin}} - {{ message.sentAt | date:'HH:mm'}}</p>
+                        <div class="message-with-marker">
+                            <div class="incoming-message">
+                                <p class="message-text">{{ message.content }}</p>
+                            </div>
+                            <span *ngIf="message.isCheck === false" class="dot"></span>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="message.senderId === personId" class="outgoing-message-container">
+                    <div class="outgoing-item">
+                        <p class="outgoing-sender">{{ message.senderLogin}} - {{ message.sentAt | date:'HH:mm'}}</p>
+                        <div class="message-with-marker">
+                            <span *ngIf="message.isCheck === false" class="dot"></span>
+                            <div class="outgoing-message">
+                                <p class="message-text">{{ message.content }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="input-container" >
+        <input class="message-input" [(ngModel)]="message" (keyup.enter)="sendMessage()"
+            (focus)="changeStatusMessages()">
+        <button class="send-button" (click)="sendMessage()"><mat-icon>send</mat-icon></button>
+    </div>
+</div>

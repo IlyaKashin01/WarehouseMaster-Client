@@ -25,9 +25,9 @@
                 <ng-template pTemplate="body" let-customer>
                     <tr>
                         <td>{{ customer.firstName }} {{ customer.middleName }} {{ customer.lastName }}</td>
-                        <td>{{ customer.warehouse }}</td>
+                        <td>{{ customer.warehouse.name }}</td>
                         <td>{{ customer.post }}</td>
-                        <td>{{ customer.birthday }}</td>
+                        <td>{{ customer.birthday | date:'dd.MM.yyyy' }}</td>
                     </tr>
                 </ng-template>
             </p-table>

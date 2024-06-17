@@ -1,0 +1,12 @@
+services:
+  site:
+    hostname: localhost
+    working_dir: /app
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/app/
+    ports:
+      - "801:4200"
+    tty: true

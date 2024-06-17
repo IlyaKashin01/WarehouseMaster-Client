@@ -2,7 +2,7 @@
     <table class="w-container">
         @for (warehouse of warehouses; track warehouse.id) {
         <tr>
-            <div class=" flex justify-content-center warehouse-container" (click)="click()" >
+            <div class=" flex justify-content-center warehouse-container" (click)="click(warehouse.id)" >
                 <p-card header={{warehouse.name}} subheader={{warehouse.purpose}} class="warehouse-card">
     
                     <div class="card-info">

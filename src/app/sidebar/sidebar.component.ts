@@ -41,4 +41,7 @@ export class SidebarComponent {
   redirectToSupplers(): void {
     this.router.navigate(['layout/supplers'])
   }
+  redirectToDialogs(): void {
+    this.router.navigate(['layout/dialogs'])
+  }
 }

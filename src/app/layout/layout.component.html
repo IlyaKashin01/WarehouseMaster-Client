@@ -8,11 +8,15 @@
 </mat-sidenav-container> -->
 <table class="layout-container">
     <tr class="sidebar-container">
-        <div class="avatar-container">
-            <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" 
-            styleClass="mr-2" 
-            size="large" (click)="true"><span class="dot"></span></p-avatar> 
-                <span> User User</span>
+        <div class="person-container">
+            <img src="data:image/jpeg;base64,{{person.avatar}}" 
+            class="mr-2 person-avatar"  
+            size="large" (click)="true"/>
+            <span *ngIf="onlineMarkers.includes(person.id)" class="dot"></span>
+                <div class="data-container">
+                <span> {{person.lastName}} {{person.firstName}} {{person.middleName}}</span>
+            <span>{{person.login}}</span>
+            </div>
         </div>
         <app-sidebar/>
     </tr>

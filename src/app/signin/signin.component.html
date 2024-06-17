@@ -1,1 +1,30 @@
-<app-telegram-auth></app-telegram-auth>
+<table class="signin-container">
+    <td class="signin-block">
+        <p-floatLabel>
+            <input id="username" type="text" pInputText (keyup)="onKeyLogin($event)"/>
+            <label for="username">Логин</label>
+        </p-floatLabel>
+    </td>
+    <td class="signin-block">
+        <p-floatLabel>
+            <input id="password" type="password" pInputText (keyup)="onKeyPass($event)" />
+            <label for="password">Пароль</label>
+        </p-floatLabel>
+    </td>
+    <td class="signin-block">
+        <button class="forgot-pass-button" (click)="goChangePass()">
+            Забыли пароль?
+        </button>
+    </td>
+    <td class="signin-block">
+        <div class="errorAllert" *ngIf="showError">
+            {{errorMessage}}
+        </div>
+        <div class="card flex justify-content-center">
+            <p-button label="Войти" [style]="{'width' : '100%'}" (onClick)="login()"/>
+        </div>
+    </td>
+<td class="signin-block">
+    <app-telegram-auth></app-telegram-auth>
+</td>
+</table>

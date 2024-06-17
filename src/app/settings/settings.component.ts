@@ -9,6 +9,8 @@ import { CardModule } from 'primeng/card';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { AvatarModule } from 'primeng/avatar';
+import { DataService } from '../services/data.service';
+import { PersonResponse } from '../models/auth/auth';
 
 @Component({
   selector: 'app-settings',
@@ -32,6 +34,8 @@ export class SettingsComponent implements OnInit {
   settingsForm: FormGroup;
   visible: boolean = false;
 
+  person: PersonResponse = this.dataService.getPerson();
+
   showDialog() {
       this.visible = true;
   }
@@ -40,7 +44,7 @@ export class SettingsComponent implements OnInit {
   showDialogPass() {
       this.visiblePass = true;
   }
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private dataService: DataService) {
     this.settingsForm = this.fb.group({
       username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],

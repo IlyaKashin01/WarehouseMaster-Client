@@ -10,13 +10,24 @@
     flex: 0 0 auto;
   }
 
-  .avatar-container {
+  .person-container {
     display: flex;
     align-items: center;
     gap: 3%;
     margin: 5%;
   }
 
+  .data-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .person-avatar {
+    border-radius: 25px;
+    width: 50px;
+    height: 50px;
+  }
   .children-container {
     width: 100%;
     box-sizing: border-box;
@@ -26,7 +37,7 @@
     display: inline-block;
     width: 8px;
     height: 8px;
-    background-color: #4caf50;
+    background-color: #02ff0c;
     border-radius: 50%;
     margin: 0 0 2% 2%;
     position: absolute;

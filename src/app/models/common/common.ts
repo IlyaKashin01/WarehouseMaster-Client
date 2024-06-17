@@ -2,6 +2,7 @@ export class Dialog {
   constructor(
     public id: number,
     public name: string,
+    public avatar: string,
     public lastMessage: string,
     public isCheck: boolean,
     public sentAt: Date,

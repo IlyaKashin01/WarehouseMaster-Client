@@ -1,3 +1,5 @@
+import { WarehouseResponse } from "../warehouse/warehouse";
+
 export class StafferRequest {
     constructor(
         public FirstName: string,
@@ -22,6 +24,7 @@ export class StafferResponse {
         public birthday: Date,
         public role: string,
         public post: string,
-        public salary: number
+        public salary: number,
+        public warehouse: WarehouseResponse
     ){}
 }

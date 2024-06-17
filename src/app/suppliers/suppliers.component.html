@@ -8,7 +8,7 @@
     <tr class="table-container">
         <div class="card">
             <p-table
-                [value]="customers"
+                [value]="providers"
                 [paginator]="true"
                 [rows]="10"
                 [tableStyle]="{ 'min-width': '90rem'}"
@@ -22,12 +22,12 @@
                         <th style="width:20%">Email</th>
                     </tr>
                 </ng-template>
-                <ng-template pTemplate="body" let-customer>
+                <ng-template pTemplate="body" let-provider>
                     <tr>
-                        <td>{{ customer.name }}</td>
-                        <td>{{ customer.warehouse }}</td>
-                        <td>{{ customer.post }}</td>
-                        <td>{{ customer.date }}</td>
+                        <td>{{ provider.fullName }}</td>
+                        <td>{{ provider.company }}</td>
+                        <td>{{ provider.phone }}</td>
+                        <td>{{ provider.email }}</td>
                     </tr>
                 </ng-template>
             </p-table>

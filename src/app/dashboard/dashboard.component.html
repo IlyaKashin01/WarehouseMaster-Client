@@ -2,14 +2,14 @@
   <td class="card-info">
     <div>
       <div class="card">
-        <p-card header="Total Shipment">
+        <p-card header="Поступления">
           <h1>{{ totalShipment }}</h1>
           <p>{{ totalShipmentChange }}</p>
         </p-card>
       </div>
 
       <div class="card">
-        <p-card header="Complete">
+        <p-card header="Отгрузки">
           <h1>{{ complete }}</h1>
           <p>{{ completeChange }}</p>
         </p-card>
@@ -18,14 +18,14 @@
 
     <div>
       <div class="card">
-        <p-card header="Pending">
+        <p-card header="Доходы">
           <h1>{{ pending }}</h1>
           <p>{{ pendingChange }}</p>
         </p-card>
       </div>
 
       <div class="card">
-        <p-card header="Refund">
+        <p-card header="Расходы">
           <h1>{{ refund }}</h1>
           <p>{{ refundChange }}</p>
         </p-card>
@@ -49,11 +49,11 @@
     <p-table [value]="products" [tableStyle]="{'width': '55rem'}">
       <ng-template pTemplate="header" let-columns>
         <tr>
-          <th>Name </th>
-          <th>Price</th>
-          <th>Category</th>
-          <th>Quantity</th>
-          <th>Status</th>
+          <th>Название </th>
+          <th>Цена</th>
+          <th>Категория</th>
+          <th>Количество</th>
+          <th>Статус</th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-product let-columns="columns">

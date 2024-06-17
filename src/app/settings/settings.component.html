@@ -7,9 +7,9 @@
             <p-dialog header="Header" [(visible)]="visible" [modal]="true" [style]="{ width: '25rem' }">
                 <ng-template pTemplate="header">
                     <div class="edit-profile-avatar">
-                        <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" shape="circle" />
+                        <p-avatar image="data:image/gif;base64,{{person.avatar}}" shape="circle" size="large" />
                         <span class="edit-profile-avatar-text">
-                            Amy Elsner
+                            {{person.lastName}} {{person.firstName}} {{person.middleName}}
                         </span>
                     </div>
                 </ng-template>

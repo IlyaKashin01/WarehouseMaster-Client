@@ -13,6 +13,6 @@ export class CustomerService {
     }
 
     getAllCustomers(): Observable<OperationResult<StafferResponse[]>> {
-        return this.http.get<OperationResult<StafferResponse[]>>('https://localhost:7202/api/staffer');
+        return this.http.get<OperationResult<StafferResponse[]>>('https://localhost:7202/api/staffer/all');
     }
 }

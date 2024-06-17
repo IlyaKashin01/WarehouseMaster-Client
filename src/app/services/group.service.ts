@@ -39,7 +39,7 @@ export class GroupService {
 
   token: string = "";
   personId: number = this.dataService.getPerson().id;
-  private newGroupSource = new BehaviorSubject<Dialog>(new Dialog(0,"", "", false, new Date(), 0, "", false, 0, ""));
+  private newGroupSource = new BehaviorSubject<Dialog>(new Dialog(0,"", "","", false, new Date(), 0, "", false, 0, ""));
   newGroup$ = this.newGroupSource.asObservable();
 
   public hubConnection: HubConnection = this.hubService.getGroupConnection() || this.hubService.ConnectionGroupHub(this.dataService.getToken(), this.personId);

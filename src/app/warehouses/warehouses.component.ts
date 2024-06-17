@@ -7,6 +7,7 @@ import { ProgressBarModule } from 'primeng/progressbar';
 import { WarehouseService } from '../services/warehouses.service';
 import { WarehouseResponse } from '../models/warehouse/warehouse';
 import { OperationResult } from '../models/common/operationResult';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-warehouses',
@@ -22,14 +23,14 @@ export class WarehousesComponent implements OnInit {
   showError: boolean = false;
   errorMessage: string = "";
 
-  constructor(private router: Router, private warehouseService: WarehouseService){}
+  constructor(private router: Router, private warehouseService: WarehouseService, private dataService: DataService){}
   ngOnInit(): void {
     this.getWarehouses()
   }
-  click () {
+  click (id: number) {
     this.transition = true;
+    this.dataService.setWarehouseId(id)
     this.router.navigate(['layout/details'])
-    console.log("click warehouse")
   }
   getOccupancyRate(warehouse: any): number {
     return (warehouse.occupancy / warehouse.capacity) * 100;

@@ -1,0 +1,60 @@
+<div class="chat-container">
+    <div class="group-header">
+        <div class="chat-header">
+            <p>{{nameGroup}}, <i class="pi pi-users" style="font-size: 2rem"></i> {{countMembers}}</p>
+        </div>
+        <button class="button" (click)="openForm()">
+            <i class="fa fa-user-plus"></i> <mat-icon>person_add_alt</mat-icon>
+        </button>
+        <button *ngIf="creatorLogin !== personLogin" class="button" (click)="leaveGroup()">
+            <i class="fa fa-user-plus"></i> <mat-icon>logout</mat-icon>
+        </button>
+        <button class="button" (click)="openWindow()">
+            <i class="fa fa-user-plus"></i> <mat-icon>info</mat-icon>
+        </button>
+    </div>
+    <app-add-member-form *ngIf="isOpen" (closeForm)="closeForm()" [groupId]="groupId"></app-add-member-form>
+    <app-group-info-form *ngIf="isOpenWindow" (closeForm)="closeWindow()" [onlineMarkers]="onlineMarkers" [personId]="personId" [groupId]="groupId" [groupName]="groupName"></app-group-info-form>
+    <div class="history" #history>
+        <div *ngFor="let gropedMessages of groupMessages" class="messages">
+            <p class="date-message">{{gropedMessages.sentAt | date:'dd|MM|yyyy '}}</p>
+            <div *ngFor="let message of gropedMessages.messages">
+                <div *ngIf="message.senderId !== personId && message.senderId !== 0" class="incoming-message-container">
+                    <div class="incoming-item">
+                        <p class="incoming-sender">{{ message.senderLogin}} - {{ message.sentAt | date:'HH:mm'}}</p>
+                        <div class="message-with-marker">
+                            <div class="incoming-message">
+                                <p class="message-text">{{ message.content }}</p>
+                            </div>
+                            <span *ngIf="message.isCheck === false" class="dot"></span>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="message.senderId === 0" class="date-message">
+                    <p>{{ message.content}}</p>
+                </div>
+                <div *ngIf="addedNotifications.length > 0 " class="date-message">
+                    <p>{{ addedNotifications[addedNotifications.length - 1] }}</p>
+                </div>
+                <div *ngIf="message.senderId === personId" class="outgoing-message-container">
+                        <div class="outgoing-item">
+                            <p class="outgoing-sender">{{ message.senderLogin}} - {{ message.sentAt | date:'HH:mm'}}</p>
+                            <div class="message-with-marker">
+                                <span *ngIf="message.isCheck === false" class="dot"></span>
+                                <div class="outgoing-message">
+                                    <p class="message-text">{{ message.content }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="input-container">
+        <input class="message-input" (keyup.enter)="sendGroupMessage()" [(ngModel)]="message" (focus)="changeStatusMessages()" [disabled]="personStatus">
+        <button class="send-button" (click)="sendGroupMessage()" [disabled]="personStatus">
+            <mat-icon>send</mat-icon>
+        </button>
+    </div>
+</div>

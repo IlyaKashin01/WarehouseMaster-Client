@@ -1,22 +1,125 @@
 <div class="card">
     <p-tabView>
         <p-tabPanel header="Запасы">
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
+            <p-table
+                [value]="products"
+                [paginator]="true"
+                [rows]="10"
+                [tableStyle]="{ 'min-width': '90rem'}"
+                [rowsPerPageOptions]="[10, 15, 50]" [style]="{'margin' : '2%', 'border' : '1px solid #e2e8f0', 'padding' : '1%', 'border-radius' : '15px'}"
+            >
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width:20%">Название товара</th>
+                        <th style="width:20%">Описание</th>
+                        <th style="width:20%">Цена</th>
+                        <th style="width:20%">На складе</th>
+                        <th style="width:20%">QR</th>
+                        <th style="width:20%">Поставщик</th>
+                        <th style="width:20%">Зарегистрировал</th>
+                        <th style="width:20%">Дата регистрации товара</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-product>
+                    <tr>
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.description }}</td>
+                        <td>{{ product.cost }}</td>
+                        <td>{{ product.count }}</td>
+                        <td><img src="data:image/bmp;base64,{{ product.qrCode }}" 
+                            [style]="{'width':'50px', 'height':'50px'}"/></td>
+                        <td>{{ product.provider.company }}</td>
+                        <td>{{ product.staffer.lastName }} {{ product.staffer.firstName }} {{ product.staffer.middleName }}</td>
+                        <td>{{ product.createdDate}}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
         </p-tabPanel>
         <p-tabPanel header="Поступление">
-            <p>
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
-                ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Consectetur, adipisci velit, sed quia non numquam eius modi.
-            </p>
+            <p-table
+                [value]="entrance"
+                [paginator]="true"
+                [rows]="10"
+                [tableStyle]="{ 'min-width': '90rem'}"
+                [rowsPerPageOptions]="[10, 15, 50]" [style]="{'margin' : '2%', 'border' : '1px solid #e2e8f0', 'padding' : '1%', 'border-radius' : '15px'}"
+            >
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width:20%">Название товара</th>
+                        <th style="width:20%">Описание</th>
+                        <th style="width:20%">Цена</th>
+                        <th style="width:20%">На складе</th>
+                        <th style="width:20%">Принято</th>
+                        <th style="width:20%">Дата поставки</th>
+                        <th style="width:20%">QR</th>
+                        <th style="width:20%">Поставщик</th>
+                        <th style="width:20%">Ответственный</th>
+                        <th style="width:20%">Статус</th>
+                        <th style="width:20%">Дата подтверждения поступления</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-element>
+                    <tr>
+                        <td>{{ element.product.name }}</td>
+                        <td>{{ element.product.description }}</td>
+                        <td>{{ element.product.cost }}</td>
+                        <td>{{ element.product.count }}</td>
+                        <td>{{ element.quantity }}</td>
+                        <td>{{ element.entranceDate }}</td>
+                        <td><img src="data:image/bmp;base64,{{ element.product.qrCode }}" 
+                             [style]="{'width':'50px', 'height':'50px'}"/></td>
+                        <td>{{ element.product.provider.fullName }}</td>
+                        <td>{{ element.staffer.firstName }}</td>
+                        <td *ngIf="!element.status"> Не подтвержден</td>
+                        <td *ngIf="element.status"> Подтвержден</td>
+                        <td *ngIf="checkDate(element.acceptDate)"></td>
+                        <td *ngIf="!checkDate(element.acceptDate)">{{ element.acceptDate }}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
         </p-tabPanel>
         <p-tabPanel header="Отгрузка">
-            <p>
-                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa
-                qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.
-            </p>
+            <p-table
+                [value]="shipment"
+                [paginator]="true"
+                [rows]="10"
+                [tableStyle]="{ 'min-width': '90rem'}"
+                [rowsPerPageOptions]="[10, 15, 50]" [style]="{'margin' : '2%', 'border' : '1px solid #e2e8f0', 'padding' : '1%', 'border-radius' : '15px'}"
+            >
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width:20%">Название товара</th>
+                        <th style="width:20%">Описание</th>
+                        <th style="width:20%">Цена</th>
+                        <th style="width:20%">На складе</th>
+                        <th style="width:20%">Отгружено</th>
+                        <th style="width:20%">Дата отгрузки</th>
+                        <th style="width:20%">QR</th>
+                        <th style="width:20%">Поставщик</th>
+                        <th style="width:20%">Ответственный</th>
+                        <th style="width:20%">Статус</th>
+                        <th style="width:20%">Дата подтверждения отгрузки</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-el>
+                    <tr>
+                        <td>{{ el.product.name }}</td>
+                        <td>{{ el.product.description }}</td>
+                        <td>{{ el.product.cost }}</td>
+                        <td>{{ el.product.count }}</td>
+                        <td>{{ el.quantity }}</td>
+                        <td>{{ el.shipmentDate }}</td>
+                        <td><img src="data:image/bmp;base64,{{ el.product.qrCode }}" 
+                             [style]="{'width':'50px', 'height':'50px'}"/></td>
+                        <td>{{ el.product.provider.fullName }}</td>
+                        <td>{{ el.staffer.firstName }}</td>
+                        <td *ngIf="!el.status"> Не подтвержден</td>
+                        <td *ngIf="el.status"> Подтвержден</td>
+                        <td *ngIf="checkDate(el.acceptDate)"></td>
+                        <td *ngIf="!checkDate(el.acceptDate)">{{ el.acceptDate }}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
         </p-tabPanel>
     </p-tabView>
 </div>

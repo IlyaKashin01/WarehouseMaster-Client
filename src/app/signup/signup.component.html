@@ -1,1 +1,50 @@
-<p>signup works!</p>
+<table class="signin-container">
+    <td class="signin-block">
+        <p-floatLabel>
+            <input id="firstName" type="text" pInputText />
+            <label for="firstName">Имя</label>
+        </p-floatLabel>
+    </td>
+    <td class="signin-block">
+        <p-floatLabel>
+            <input id="lastName" type="text" pInputText />
+            <label for="lastName">Фамилия</label>
+        </p-floatLabel>
+    </td>
+    <td class="signin-block">
+        <p-floatLabel>
+            <input id="middleName" type="text" pInputText />
+            <label for="middleName">Отчество</label>
+        </p-floatLabel>
+    </td>
+    <td class="signin-block">
+        <p-floatLabel>
+            <input id="username" type="text" pInputText />
+            <label for="username">Логин</label>
+        </p-floatLabel>
+    </td>
+    <td class="signin-block">
+        <p-floatLabel>
+            <input id="password" type="password" pInputText  />
+            <label for="password">Пароль</label>
+        </p-floatLabel>
+    </td>
+    <td class="signin-block">
+        <p-floatLabel>
+            <input id="email" type="text" pInputText  />
+            <label for="email">Email</label>
+        </p-floatLabel>
+    </td>
+    <td class="signin-block">
+        <div class="errorAllert" *ngIf="showError">
+            {{errorMessage}}
+        </div>
+        <div class="card flex justify-content-center">
+            <p-button label="Войти" [style]="{'width' : '100%'}" (onClick)="signup(registrationForm)"/>
+        </div>
+    </td>
+<td class="signin-block">
+    <app-telegram-auth></app-telegram-auth>
+</td>
+</table>
+
