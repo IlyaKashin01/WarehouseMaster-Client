@@ -1,0 +1,43 @@
+<p-sidebar [(visible)]="visible" [style]="{ width: '45rem' }" [closeOnEscape]="true" showCloseIcon="false">
+    <span class="form-description">Добавление склада</span>
+    <div class="text-fields">
+        <div class="field-group">
+            <label for="name">Название</label>
+            <input pInputText id="name" [(ngModel)]="name" autocomplete="off" />
+        </div>
+        <div class="field-group">
+            <label for="purpose">Назначение</label>
+            <input pInputText id="purpose" [(ngModel)]="purpose" autocomplete="off" />
+        </div>
+        <div class="field-group">
+            <label for="address">Адрес</label>
+            <input pInputText id="address" [(ngModel)]="address" autocomplete="off" />
+        </div>
+    </div>
+    <div class="number-fields">
+        <div class="field-group">
+            <label for="square">Площадь (м²)</label>
+            <input pInputText id="square" [(ngModel)]="square" type="number" autocomplete="off" />
+        </div>
+        <div class="field-group">
+            <label for="countEmployees">Количество сотрудников</label>
+            <input pInputText id="countEmployees" [(ngModel)]="countEmployees" type="number" autocomplete="off" />
+        </div>
+        <div class="field-group">
+            <label for="countTechnic">Количество техники</label>
+            <input pInputText id="countTechnic" [(ngModel)]="countTechnic" type="number" autocomplete="off" />
+        </div>
+        <div class="field-group">
+            <label for="capacity">Вместимость (м²)</label>
+            <input pInputText id="capacity" [(ngModel)]="capacity" type="number" autocomplete="off" />
+        </div>
+        <div class="field-group">
+            <label for="occupancy">Загруженность (м²)</label>
+            <input pInputText id="occupancy" [(ngModel)]="occupancy" type="number" autocomplete="off" />
+        </div>
+    </div>
+    <div class="buttons-container">
+        <p-button label="Отмена" severity="secondary" class="p-element" (click)="close()" />
+        <p-button label="Сохранить" class="p-element" (click)="save()" />
+    </div>
+</p-sidebar>

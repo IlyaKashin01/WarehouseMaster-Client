@@ -1,0 +1,56 @@
+<p-sidebar [(visible)]="visible" [style]="{ width: '45rem' }" [closeOnEscape]="true" showCloseIcon="false">
+    <span class="form-description">Добавление товара</span>
+    
+    <div class="text-fields">
+        <div class="field-group">
+            <label for="name">Название</label>
+            <input pInputText id="name" [(ngModel)]="name" autocomplete="off" />
+        </div>
+        
+        <div class="field-group">
+            <label for="description">Описание</label>
+            <input pInputText id="description" [(ngModel)]="description" autocomplete="off" />
+        </div>
+
+        <div class="field-group">
+            <label for="nameCategory">Категория</label>
+            <input pInputText id="nameCategory" [(ngModel)]="nameCategory" autocomplete="off" />
+        </div>
+
+        <div class="field-group">
+            <label for="nameSubCategory">Подкатегория</label>
+            <input pInputText id="nameSubCategory" [(ngModel)]="nameSubCategory" autocomplete="off" />
+        </div>
+    </div>
+
+    <div class="number-fields">
+        <div class="field-group">
+            <label for="cost">Стоимость</label>
+            <input pInputText type="number" id="cost" [(ngModel)]="cost" autocomplete="off" />
+        </div>
+
+        <div class="field-group">
+            <label for="count">Количество</label>
+            <input pInputText type="number" id="count" [(ngModel)]="count" autocomplete="off" />
+        </div>
+
+        <div class="field-group">
+            <label for="stafferId">ID сотрудника</label>
+            <input pInputText type="number" id="stafferId" [(ngModel)]="stafferId" autocomplete="off" />
+        </div>
+
+        <div class="field-group">
+            <label for="warehouseId">ID склада</label>
+            <input pInputText type="number" id="warehouseId" [(ngModel)]="warehouseId" autocomplete="off" />
+        </div>
+    </div>
+
+    <div *ngIf="showError" class="error-message">
+        {{ errorMessage }}
+    </div>
+
+    <div class="button-container">
+        <button pButton (click)="close()" label="Отмена" class="p-button-secondary"></button>
+        <button pButton (click)="save()" label="Сохранить" class="p-button-primary"></button>
+    </div>
+</p-sidebar>
