@@ -8,11 +8,12 @@ import { WarehouseService } from '../services/warehouses.service';
 import { WarehouseResponse } from '../models/warehouse/warehouse';
 import { OperationResult } from '../models/common/operationResult';
 import { DataService } from '../services/data.service';
+import { AddWarehouseFormComponent } from '../forms/add-warehouse-form/add-warehouse-form.component';
 
 @Component({
   selector: 'app-warehouses',
   standalone: true,
-  imports: [CardModule, ButtonModule, ProgressBarModule, RouterOutlet, NgFor],
+  imports: [CardModule, ButtonModule, ProgressBarModule, RouterOutlet, NgFor, AddWarehouseFormComponent],
   providers: [WarehouseService],
   templateUrl: './warehouses.component.html',
   styleUrl: './warehouses.component.css'
@@ -22,6 +23,7 @@ export class WarehousesComponent implements OnInit {
   warehouses: WarehouseResponse[] = []
   showError: boolean = false;
   errorMessage: string = "";
+  visible: boolean = false;
 
   constructor(private router: Router, private warehouseService: WarehouseService, private dataService: DataService){}
   ngOnInit(): void {
@@ -34,6 +36,11 @@ export class WarehousesComponent implements OnInit {
   }
   getOccupancyRate(warehouse: any): number {
     return (warehouse.occupancy / warehouse.capacity) * 100;
+  }
+
+  close() {
+    this.visible = false;
+    this.getWarehouses();
   }
 
   getWarehouses(){

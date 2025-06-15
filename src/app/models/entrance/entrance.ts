@@ -22,3 +22,12 @@ export class EntranceResponse {
         public acceptDate:Date
     ){}
 }
+export class EntranceShortResponse {
+    constructor (
+        public id:number,
+        public warehouseId:number,
+        public entranceDate:Date,
+        public status:boolean,
+        public acceptDate:Date
+    ){}
+}

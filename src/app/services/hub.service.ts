@@ -14,7 +14,7 @@ export class HubService {
 
   ConnectionChatHub(token: string, id: number) {
     this.chatHubConnection = new HubConnectionBuilder()
-      .withUrl(`https://localhost:7130/chat?access_token=${token}`)
+      .withUrl(`https://192.168.1.56:7130/chat?access_token=${token}`)
       .build();
 
     this.chatPromiseStart = this.chatHubConnection.start()
@@ -44,7 +44,7 @@ export class HubService {
 
   ConnectionGroupHub(token: string, id: number) {
     this.groupHubConnection = new HubConnectionBuilder()
-      .withUrl(`https://localhost:7130/group?access_token=${token}`)
+      .withUrl(`https://192.168.1.56:7130/group?access_token=${token}`)
       .build();
 
     this.groupPromiseStart = this.groupHubConnection.start()

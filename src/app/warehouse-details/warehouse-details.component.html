@@ -26,18 +26,22 @@
                         <td>{{ product.description }}</td>
                         <td>{{ product.cost }}</td>
                         <td>{{ product.count }}</td>
-                        <td><img src="data:image/bmp;base64,{{ product.qrCode }}" 
+                        <td><img src="data:image/bmp;base64,{{ product.qrCode }}"
                             [style]="{'width':'50px', 'height':'50px'}"/></td>
                         <td>{{ product.provider.company }}</td>
                         <td>{{ product.staffer.lastName }} {{ product.staffer.firstName }} {{ product.staffer.middleName }}</td>
-                        <td>{{ product.createdDate}}</td>
+                        <td>{{ product.entrance.acceptDate}}</td>
                     </tr>
                 </ng-template>
             </p-table>
         </p-tabPanel>
         <p-tabPanel header="Поступление">
+            <div class="button-container" style="margin: 1rem 2rem 0 2rem">
+                <button pButton (click)="visible = true" label="Добавить" class="p-button-primary"></button>
+            </div>
+            <app-add-product-form [visible]="visible" (visibleChange)="visible = $event" (closeForm)="onProductAdded()"></app-add-product-form>
             <p-table
-                [value]="entrance"
+                [value]="entrances"
                 [paginator]="true"
                 [rows]="10"
                 [tableStyle]="{ 'min-width': '90rem'}"
@@ -45,7 +49,7 @@
             >
                 <ng-template pTemplate="header">
                     <tr>
-                        <th style="width:20%">Название товара</th>
+                        <th style="width:20%">Название</th>
                         <th style="width:20%">Описание</th>
                         <th style="width:20%">Цена</th>
                         <th style="width:20%">На складе</th>
@@ -58,22 +62,22 @@
                         <th style="width:20%">Дата подтверждения поступления</th>
                     </tr>
                 </ng-template>
-                <ng-template pTemplate="body" let-element>
+                <ng-template pTemplate="body" let-entrance>
                     <tr>
-                        <td>{{ element.product.name }}</td>
-                        <td>{{ element.product.description }}</td>
-                        <td>{{ element.product.cost }}</td>
-                        <td>{{ element.product.count }}</td>
-                        <td>{{ element.quantity }}</td>
-                        <td>{{ element.entranceDate }}</td>
-                        <td><img src="data:image/bmp;base64,{{ element.product.qrCode }}" 
+                        <td>{{ entrance.product.name }}</td>
+                        <td>{{ entrance.product.description }}</td>
+                        <td>{{ entrance.product.cost }}</td>
+                        <td>{{ entrance.product.count }}</td>
+                        <td>{{ entrance.quantity }}</td>
+                        <td>{{ entrance.entranceDate }}</td>
+                        <td><img src="data:image/bmp;base64,{{ entrance.product.qrCode }}"
                              [style]="{'width':'50px', 'height':'50px'}"/></td>
-                        <td>{{ element.product.provider.fullName }}</td>
-                        <td>{{ element.staffer.firstName }}</td>
-                        <td *ngIf="!element.status"> Не подтвержден</td>
-                        <td *ngIf="element.status"> Подтвержден</td>
-                        <td *ngIf="checkDate(element.acceptDate)"></td>
-                        <td *ngIf="!checkDate(element.acceptDate)">{{ element.acceptDate }}</td>
+                        <td>{{ entrance.product.provider.fullName }}</td>
+                        <td>{{ entrance.staffer.firstName }}</td>
+                        <td *ngIf="!entrance.status"> Не подтвержден</td>
+                        <td *ngIf="entrance.status"> Подтвержден</td>
+                        <td *ngIf="checkDate(entrance.acceptDate)"></td>
+                        <td *ngIf="!checkDate(entrance.acceptDate)">{{ entrance.acceptDate }}</td>
                     </tr>
                 </ng-template>
             </p-table>
@@ -109,7 +113,7 @@
                         <td>{{ el.product.count }}</td>
                         <td>{{ el.quantity }}</td>
                         <td>{{ el.shipmentDate }}</td>
-                        <td><img src="data:image/bmp;base64,{{ el.product.qrCode }}" 
+                        <td><img src="data:image/bmp;base64,{{ el.product.qrCode }}"
                              [style]="{'width':'50px', 'height':'50px'}"/></td>
                         <td>{{ el.product.provider.fullName }}</td>
                         <td>{{ el.staffer.firstName }}</td>

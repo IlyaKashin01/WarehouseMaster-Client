@@ -4,6 +4,7 @@ import { ChartModule } from 'primeng/chart';
 import { TagModule } from 'primeng/tag';
 import { TabViewModule } from 'primeng/tabview';
 import { TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
 import { WarehouseService } from '../services/warehouses.service';
 import { ShipmentResponse } from '../models/shipment/shipment';
 import { OperationResult } from '../models/common/operationResult';
@@ -12,22 +13,24 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { DataService } from '../services/data.service';
 import { ProductResponse } from '../models/product/product';
+import { AddProductFormComponent } from '../forms/add-product-form/add-product-form.component';
 
 @Component({
   selector: 'app-warehouse-details',
   standalone: true,
-  imports: [CardModule, TagModule, ChartModule, TabViewModule, TableModule, CommonModule, FormsModule],
+  imports: [CardModule, TagModule, ChartModule, TabViewModule, TableModule, CommonModule, FormsModule, ButtonModule, AddProductFormComponent],
   providers: [WarehouseService],
   templateUrl: './warehouse-details.component.html',
   styleUrl: './warehouse-details.component.css'
 })
 export class WarehouseDetailsComponent implements OnInit{
   shipment: ShipmentResponse[] = [];
-  entrance: EntranceResponse[] = [];
+  entrances: EntranceResponse[] = [];
   products: ProductResponse[] = [];
   showError: boolean = false;
   errorMessage: string = "";
   warehouseId: number = 0;
+  visible: boolean = false;
 
   constructor(private warehouseService: WarehouseService, private dataService: DataService) {}
 
@@ -65,7 +68,7 @@ export class WarehouseDetailsComponent implements OnInit{
     this.warehouseService.getAllEntrance(warehouseId).subscribe({
       next: async (data: OperationResult<EntranceResponse[]>) => {
           if (data.result && data.success) {
-              this.entrance = data.result;
+              this.entrances = data.result;
           }
           else
           {
@@ -100,5 +103,10 @@ export class WarehouseDetailsComponent implements OnInit{
           this.errorMessage = error.error.message;
       }
   });
+  }
+
+  onProductAdded(): void {
+    this.getProducts(this.warehouseId);
+    this.getEntrance(this.warehouseId);
   }
 }

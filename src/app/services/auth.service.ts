@@ -10,20 +10,20 @@ export class AuthService {
     constructor(private http: HttpClient) { }
 
     signInRequest(requestBody: AuthRequest): Observable<OperationResult<AuthResponse>> {
-        return this.http.post<OperationResult<AuthResponse>>('https://localhost:7130/api/auth/signin', requestBody);
+        return this.http.post<OperationResult<AuthResponse>>('https://192.168.1.56:7130/api/auth/signin', requestBody);
     }
 
     signUpRequest(requestBody: SignUpRequest): Observable<OperationResult<number>> {
-        return this.http.post<OperationResult<number>>('https://localhost:7130/api/auth/signup', requestBody);
+        return this.http.post<OperationResult<number>>('https://192.168.1.56:7130/api/auth/signup', requestBody);
     }
 
     getResetCode(request: ResetRequest): Observable<OperationResult<boolean>> {
-        return this.http.post<OperationResult<boolean>>('https://localhost:7130/api/password/get-reset-code', request);
+        return this.http.post<OperationResult<boolean>>('https://192.168.1.56:7130/api/password/get-reset-code', request);
     }
     checkResetCode(request: CodeRequest): Observable<OperationResult<boolean>> {
-        return this.http.post<OperationResult<boolean>>('https://localhost:7130/api/password/check-reset-code', request);
+        return this.http.post<OperationResult<boolean>>('https://192.168.1.56:7130/api/password/check-reset-code', request);
     }
     changePass(request: PassRequest): Observable<OperationResult<boolean>> {
-        return this.http.put<OperationResult<boolean>>('https://localhost:7130/api/password/change-pass', request);
+        return this.http.put<OperationResult<boolean>>('https://192.168.1.56:7130/api/password/change-pass', request);
     }
 }

@@ -5,3 +5,14 @@
     margin: 5% 0 0 5%;
     border: 1px solid #e2e8f0;
 }
+.form-container {
+  width: 80vw;
+}
+
+.table-container {
+  width: 80vw;
+}
+
+.add-button{
+  margin: 2% 0 0 2%
+}

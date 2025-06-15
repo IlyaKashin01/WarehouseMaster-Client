@@ -1,5 +1,6 @@
 import { ProviderResponse } from "../provider/provider";
 import { StafferResponse } from "../staffer/staffer";
+import {EntranceShortResponse} from "../entrance/entrance";
 
 export class ProductResponse {
     constructor(
@@ -11,6 +12,7 @@ export class ProductResponse {
         public qrCode:string,
         public provider:ProviderResponse,
         public staffer: StafferResponse,
+        public entrance: EntranceShortResponse,
         public createdDate: Date
     ){}
 }

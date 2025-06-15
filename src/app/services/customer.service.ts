@@ -9,10 +9,10 @@ export class CustomerService {
   constructor(private http: HttpClient) { }
 
     addCustomer(requestBody: StafferRequest): Observable<OperationResult<number>> {
-      return this.http.post<OperationResult<number>>('https://localhost:7202/api/staffer', requestBody);
+      return this.http.post<OperationResult<number>>('https://192.168.1.56:7202/api/staffer', requestBody);
     }
 
     getAllCustomers(): Observable<OperationResult<StafferResponse[]>> {
-        return this.http.get<OperationResult<StafferResponse[]>>('https://localhost:7202/api/staffer/all');
+        return this.http.get<OperationResult<StafferResponse[]>>('https://192.168.1.56:7202/api/staffer/all');
     }
 }
